@@ -1,0 +1,181 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+input,
+button {
+  font-family: "Open Sans", sans-serif;
+}
+
+main {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.input_section {
+  background: white;
+  padding: 53px 79px 53px 79px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+h1 {
+  margin-top: 24px;
+  text-align: center;
+  color: #4b4b4b;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #4b4b4b;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.input label {
+  font-size: 14px;
+  color: gray;
+}
+
+.input input {
+  padding: 5px;
+}
+
+#bookSubmit {
+  margin-top: 5px;
+  padding-left: 29px;
+  padding-right: 29px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  background: #7743db;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+}
+
+#bookSubmit:hover {
+  cursor: pointer;
+  background: #5722b9;
+}
+#bookSubmit:active {
+  cursor: pointer;
+  background: #3f06a8;
+}
+
+#bookDelete {
+  margin-top: 5px;
+  padding-left: 29px;
+  padding-right: 29px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  background: #f6635c;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+}
+
+#bookDelete:hover {
+  cursor: pointer;
+  background: #f04037;
+}
+#bookDelete:active {
+  cursor: pointer;
+  background: #e91b10;
+}
+
+.search_section {
+  margin-top: 28px;
+  background: white;
+  padding: 53px 79px 53px 79px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+#searchBook label {
+  font-size: 14px;
+  color: gray;
+}
+
+.stateBook {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+}
+
+.book_shelf {
+  width: 551px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 55px;
+  border: none;
+  border-radius: 20px;
+}
+
+.outer-container {
+  color: #4b4b4b;
+  padding: 20px 25px;
+  margin-bottom: 12px;
+  display: flex;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-item {
+  font-size: 14px;
+}
+.book-item h3 {
+  margin-bottom: 6px;
+}
+.book-item p {
+  margin-bottom: 5px;
+}
+
+.span-status-belum {
+  background: #f6635c;
+  color: white;
+  padding: 3px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.span-status-belum:hover {
+  background: #d33c34;
+}
+
+.span-status-sudah {
+  background: green;
+  color: white;
+  padding: 3px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.delete-button {
+  height: 36px;
+  width: 36px;
+  border: none;
+  font-weight: bold;
+  color: white;
+  border-radius: 50%;
+  background-color: red;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: rgb(213, 8, 8);
+}
