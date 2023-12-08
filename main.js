@@ -25,6 +25,7 @@ function getDataFromLocalStorage() {
 
   if (data !== null) {
     for (const bookShelfData of data) {
+      bookShelfData.year = parseInt(bookShelfData.year);
       bookShelf.push(bookShelfData);
     }
   }
@@ -36,13 +37,13 @@ function generateID() {
   return +new Date();
 }
 
-function generateBookShelfObj(id, title, author, year, isCompleted) {
+function generateBookShelfObj(id, title, author, year, isComplete) {
   return {
     id,
     title,
     author,
     year,
-    isCompleted,
+    isComplete,
   };
 }
 
@@ -85,7 +86,7 @@ function addBookShelfData() {
 }
 
 function createBookShelf(bookShelfObj) {
-  const { id, title, author, year, isCompleted } = bookShelfObj;
+  const { id, title, author, year, isComplete } = bookShelfObj;
 
   const createTitle = document.createElement("h3");
   createTitle.innerText = title;
@@ -118,7 +119,7 @@ function createBookShelf(bookShelfObj) {
     editBookShelfList(id);
   });
 
-  if (isCompleted) {
+  if (isComplete) {
     const statusFinish = document.createElement("span");
     statusFinish.classList.add("span-status-belum");
     statusFinish.innerText = "Belum Selesai Baca";
@@ -147,7 +148,7 @@ function moveBookToFinish(bookId) {
 
   if (bookTarget == null) return;
 
-  bookTarget.isCompleted = true;
+  bookTarget.isComplete = true;
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
@@ -157,7 +158,7 @@ function moveBookToNotFinish(bookId) {
 
   if (bookTarget == null) return;
 
-  bookTarget.isCompleted = false;
+  bookTarget.isComplete = false;
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 }
@@ -185,7 +186,7 @@ function editBookShelfList(bookId) {
 
   const title = prompt("Edit Judul Buku:", bookTarget.title);
   const author = prompt("Edit Penulis Buku:", bookTarget.author);
-  const year = prompt("Edit Tahun Terbit Buku:", bookTarget.year);
+  const year = parseInt(prompt("Edit Tahun Terbit Buku:", bookTarget.year));
 
   bookTarget.title = title || bookTarget.title;
   bookTarget.author = author || bookTarget.author;
@@ -237,7 +238,7 @@ document.addEventListener(RENDER_EVENT, function () {
 
   for (const bookItem of bookShelf) {
     const bookShelfElement = createBookShelf(bookItem);
-    if (bookItem.isCompleted) {
+    if (bookItem.isComplete) {
       completedReading.append(bookShelfElement);
     } else {
       incompletedReading.append(bookShelfElement);
