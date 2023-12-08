@@ -103,7 +103,7 @@ h2 {
   border-radius: 20px;
 }
 
-#searchBook{
+#searchBook {
   /* background: #7743db; */
   display: flex;
   align-items: center;
@@ -114,14 +114,13 @@ h2 {
   color: gray;
 }
 
-#searchBookTitle{
+#searchBookTitle {
   width: 100%;
   padding: 3px 12px;
   margin: 0 6px;
 }
 
-
-#searchSubmit{
+#searchSubmit {
   padding: 3px 12px;
   color: white;
   border-color: #7743db;
@@ -202,4 +201,17 @@ h2 {
 
 .delete-button:hover {
   background-color: rgb(213, 8, 8);
+}
+
+.edit-button {
+  background: gray;
+  color: white;
+  padding: 3px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+.edit-button:hover {
+  background: rgb(80, 80, 80);
 }

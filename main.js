@@ -79,7 +79,6 @@ function addBookShelfData() {
     statusBook
   );
   bookShelf.push(bookShelfObj);
-  console.log(statusBook);
 
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
@@ -112,6 +111,13 @@ function createBookShelf(bookShelfObj) {
     deleteBookShelfList(id);
   });
 
+  const editButton = document.createElement("span");
+  editButton.classList.add("edit-button");
+  editButton.innerText = "Edit";
+  editButton.addEventListener("click", function () {
+    editBookShelfList(id);
+  });
+
   if (isCompleted) {
     const statusFinish = document.createElement("span");
     statusFinish.classList.add("span-status-belum");
@@ -121,7 +127,7 @@ function createBookShelf(bookShelfObj) {
       moveBookToNotFinish(id);
     });
 
-    createContainer.append(statusFinish, deleteButton);
+    createContainer.append(statusFinish, deleteButton, editButton);
   } else {
     const statusNotFinish = document.createElement("span");
     statusNotFinish.classList.add("span-status-sudah");
@@ -130,7 +136,7 @@ function createBookShelf(bookShelfObj) {
     statusNotFinish.addEventListener("click", function () {
       moveBookToFinish(id);
     });
-    createContainer.append(statusNotFinish, deleteButton);
+    createContainer.append(statusNotFinish, deleteButton, editButton);
   }
 
   return createContainer;
@@ -161,9 +167,32 @@ function deleteBookShelfList(bookId) {
 
   if (bookTarget === -1) return;
 
-  bookShelf.splice(bookTarget, 1);
-  document.dispatchEvent(new Event(RENDER_EVENT));
+  const isConfirmed = window.confirm(
+    "Apakah Anda yakin ingin menghapus buku ini?"
+  );
+
+  if (isConfirmed) {
+    bookShelf.splice(bookTarget, 1);
+    document.dispatchEvent(new Event(RENDER_EVENT));
+    saveData();
+  }
+}
+
+function editBookShelfList(bookId) {
+  const bookTarget = findBookId(bookId);
+
+  if (bookTarget == null) return;
+
+  const title = prompt("Edit Judul Buku:", bookTarget.title);
+  const author = prompt("Edit Penulis Buku:", bookTarget.author);
+  const year = prompt("Edit Tahun Terbit Buku:", bookTarget.year);
+
+  bookTarget.title = title || bookTarget.title;
+  bookTarget.author = author || bookTarget.author;
+  bookTarget.year = year || bookTarget.year;
+
   saveData();
+  document.dispatchEvent(new Event(RENDER_EVENT));
 }
 
 document
@@ -199,10 +228,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-document.addEventListener(SAVED_EVENT, () => {
-  console.log("Data berhasil di simpan.");
-});
-
 document.addEventListener(RENDER_EVENT, function () {
   const incompletedReading = document.getElementById("book-item");
   incompletedReading.innerHTML = "";
@@ -210,7 +235,6 @@ document.addEventListener(RENDER_EVENT, function () {
   const completedReading = document.getElementById("book-item-finish");
   completedReading.innerHTML = "";
 
-  console.log(bookShelf);
   for (const bookItem of bookShelf) {
     const bookShelfElement = createBookShelf(bookItem);
     if (bookItem.isCompleted) {
