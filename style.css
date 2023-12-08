@@ -103,9 +103,34 @@ h2 {
   border-radius: 20px;
 }
 
+#searchBook{
+  /* background: #7743db; */
+  display: flex;
+  align-items: center;
+}
+
 #searchBook label {
   font-size: 14px;
   color: gray;
+}
+
+#searchBookTitle{
+  width: 100%;
+  padding: 3px 12px;
+  margin: 0 6px;
+}
+
+
+#searchSubmit{
+  padding: 3px 12px;
+  color: white;
+  border-color: #7743db;
+  background: #7743db;
+}
+
+#searchSubmit:hover {
+  cursor: pointer;
+  background: #5722b9;
 }
 
 .stateBook {
@@ -124,15 +149,12 @@ h2 {
   border-radius: 20px;
 }
 
-.outer-container {
+.inner-container {
   color: #4b4b4b;
   padding: 20px 25px;
   margin-bottom: 12px;
-  display: flex;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .book-item {
@@ -165,15 +187,17 @@ h2 {
   cursor: pointer;
 }
 
+.span-status-sudah:hover {
+  background: rgb(4, 100, 4);
+}
+
 .delete-button {
-  height: 36px;
-  width: 36px;
-  border: none;
-  font-weight: bold;
+  background: red;
   color: white;
-  border-radius: 50%;
-  background-color: red;
+  padding: 3px 12px;
+  border-radius: 10px;
   cursor: pointer;
+  margin-left: 6px;
 }
 
 .delete-button:hover {
